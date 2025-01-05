@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id" class="home-page">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Curriculum Vitae Data</title>
+    <link rel="icon" type="image/png" href="profil.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="warningBox" class="warning-box">🚫</div>
+    
+    <header>
+        <div class="left-content">
+            <div class="profile-image">
+                <img src="https://th.bing.com/th/id/OIP.audMX4ZGbvT2_GJTx2c4GgHaHw?w=172&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="Profile">
+            </div>
+            <div class="details">
+                <div class="name">
+                    Ardi Primadani
+                    <div class="download-circle" onclick="downloadImage()">
+                        <i class="fas fa-download"></i>
+                    </div>
+                </div>
+                <div class="phone">+62 812-3456-7890</div>
+            </div>        
+        </div>
+        <div class="icons-container">
+            <div class="logout-icon" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+            </div>
+            <div class="data-icon" onclick="showData()">
+                <i class="fas fa-book"></i>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="about-me">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>
+                    Hello! I'm Ardi Primadani, a passionate Frontend Developer with a keen interest in web development and UI/UX design. 
+                    I enjoy crafting user-friendly interfaces and bringing ideas to life through code.
+                </p>
+                <p>
+                    When I'm not coding, you can find me exploring new technologies, reading, or spending time outdoors. 
+                    I believe in continuous learning and strive to improve my skills every day.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="https://th.bing.com/th/id/OIP.audMX4ZGbvT2_GJTx2c4GgHaHw?w=172&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="About Me">
+            </div>
+        </div>
+    </main>
+
+    <h1>Education History</h1>
+    <div class="education-status">
+        <div class="edu-box sd">
+            <h3>SD</h3>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq9BqgIl6ON8ljjfpIV1tbRhV2cA_K_iYzcg&s" alt="SD Image" class="transparent">
+            <h4>SDN Penjaringan 09 Petang</h4>
+            <p>Jl. Bandengan Utara No.80, RT.6/RW.16, Penjaringan, Kec. Penjaringan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14440</p>
+        </div>
+        <div class="edu-box mts">
+            <h3>MTs</h3>
+            <img src="https://di8f64wxtiymb.cloudfront.net/dafa781d-de7c-4140-bd62-e39921998d43.jpg" alt="MTs Image" class="transparent">
+            <h4>Madrasah Tsanawiyah Khairul Ummah</h4>
+            <p>Jl. Kapuk Muara Raya No.12, RT.6/RW.5, Kapuk Muara, Kec. Penjaringan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14460</p>
+        </div>
+        <div class="edu-box ma">
+            <h3>MA</h3>
+            <img src="https://di8f64wxtiymb.cloudfront.net/dafa781d-de7c-4140-bd62-e39921998d43.jpg" alt="MA Image" class="transparent">
+            <h4>Madrasah Aliyah Khairul Ummah</h4>
+            <p>Jl. Kapuk Muara Raya No.12, RT.6/RW.5, Kapuk Muara, Kec. Penjaringan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14460</p>
+        </div>
+        <div class="edu-box kuliah">
+            <h3>Kuliah</h3>
+            <img src="https://students.bsi.ac.id/mahasiswa/gambar/logo_ubsi.png" alt="Kuliah Image" >
+            <h4>Universitas Bina Sarana Informatika,Teknik Informatika</h4>
+            <p>Jl. Kramat Raya No.98, RT.2/RW.9, Kwitang, Kec. Senen, Jkt Pusat, Daerah Khusus Ibukota Jakarta 10450</p>
+        </div>
+    </div>
+
+    <main>
+        <h1>Contact Information</h1>
+        <div class="address-section">
+            <div class="address-text">
+                <h2>Alamat</h2>
+                <p>
+                    Alamat saya adalah di Rusunawa Penjaringan Tower F, Jakarta. Lokasi ini sangat strategis dan mudah dijangkau. 
+                    Dikelilingi oleh berbagai fasilitas umum seperti pusat perbelanjaan, rumah sakit, dan sekolah.
+                </p>
+                <p>
+                    Jl. Tanah Pasir Rusunawa Tower F Lt.10/No.11, RT.012/RW.006, Penjaringan, Kec. Penjaring, 14440
+                </p>
+            </div>
+            <div class="address-map">
+                <!-- Google Maps Embed -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.999892113446!2d106.79342087362174!3d-6.130715093856098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6a1d69c70e6065%3A0x39ae31eb4a2d008b!2sRusunawa%20Penjaringan%20Tower%20F!5e0!3m2!1sid!2sid!4v1735885923276!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </main>
+
+    <div class="contact-container"> 
+        <!-- Kolom Email -->
+        <div class="contact-column">
+            <h3>Email</h3>
+            <i class="fa-solid fa-envelope icon email-icon"></i>
+            <p class="contact-text">
+                <a href="mailto:example@email.com">example@email.com</a>
+            </p>
+        </div>
+        <!-- Kolom WhatsApp -->
+        <div class="contact-column">
+            <h3>WhatsApp</h3>
+            <i class="fa-brands fa-whatsapp icon whatsapp-icon"></i>
+            <p class="contact-text">
+                <a href="https://wa.me/6281234567890" target="_blank">+62 812-3456-7890</a>
+            </p>
+        </div>
+    </div>
+    <h1>Language Proficiency</h1>
+    <div class="languages-container">
+        <div class="language-box" onclick="rotateBox(this, 'English', 70)">
+            <div class="inner-box">
+                <div class="front">
+                    <img src="https://flagcdn.com/w320/gb.png" alt="English Flag" class="flag">
+                    <p class="language-name">English</p>
+                </div>
+                <div class="back">
+                    <p class="proficiency">English Proficiency: 70%</p>
+                </div>
+            </div>
+        </div>
+        <div class="language-box" onclick="rotateBox(this, 'Indonesian', 90)">
+            <div class="inner-box">
+                <div class="front">
+                    <img src="https://flagcdn.com/w320/id.png" alt="Indonesian Flag" class="flag">
+                    <p class="language-name">Indonesian</p>
+                </div>
+                <div class="back">
+                    <p class="proficiency">Indonesian Proficiency: 90%</p>
+                </div>
+            </div>
+        </div>
+        <div class="language-box" onclick="rotateBox(this, 'Arabic', 40)">
+            <div class="inner-box">
+                <div class="front">
+                    <img src="https://flagcdn.com/w320/sa.png" alt="Arabic Flag" class="flag">
+                    <p class="language-name">Arabic</p>
+                </div>
+                <div class="back">
+                    <p class="proficiency">Arabic Proficiency: 50%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hobby-section">
+        <h1>Hobbies & Interests</h1>
+        <div class="circle-container">
+            <div class="circle" onclick="toggleMusic()">
+                <i class="fas fa-music"></i>
+            </div>
+            <div class="circle" id="codingCircle">
+                <i class="fas fa-code"></i>
+            </div>
+            <div class="circle" onclick="goTodesain()">
+                <i class="fas fa-book"></i>
+            </div>
+            <div class="circle" onclick="window.location.href='keyboard.html';">
+                <i class="fas fa-keyboard"></i>
+            </div>            
+            <div class="circle" onclick="goToMobilePage()">
+                <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div class="circle">
+                <i class="fas fa-laptop-code"></i> <!-- Ikon Desainer Website -->
+            </div>
+        </div>
+    </div>    
+    <audio id="backgroundMusic" loop>
+        <source src="Musik/Beauty And A Beat.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+<script src="js/home.js"></script>
+</body>
+</html>

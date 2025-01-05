@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" class="index-page">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Curriculum Vitae</title>
+    <link rel="icon" type="image/png" href="profil.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="warningBox" class="warning-box">🚫</div>
+    
+    <div id="unsupportedMessage" class="unsupported-message">Website Tidak di dukung oleh perangkat anda</div>
+    <div id="mainContent" class="main-content">
+        <div class="icon">i</div>
+        <div class="container">
+            <div class="welcome-text">Welcome To</div>
+            <div class="title">Web Curriculum Vitae</div>
+            <div class="profile-container">
+                <div class="profile-image" onclick="flipProfileImage()">
+                    <img src="https://th.bing.com/th/id/R.6ae74c5f86466ef4f6fc6253c767381a?rik=5DSgIRvIaK7UPw&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f5%2fProfile-Avatar-PNG.png&ehk=GVMh4KTpyOBERsOt5H%2b8TcGp%2bS8DdbR6niBs54kRaYA%3d&risl=&pid=ImgRaw&r=0" alt="Front Profile" class="front">
+                    <img src="https://masterbundles.com/wp-content/uploads/2023/05/flat-faces-icons-circle-woman-6-73-490x490.png" alt="Back Profile" class="back">
+                </div>
+            </div>
+            <div class="name">Ardi Primadani</div>
+            <button class="button" onclick="showOverlay()">OPEN</button>
+        </div>
+    </div>
+
+    <div id="passwordOverlay" class="overlay">
+        <div class="overlay-content">
+            <span class="close-text" onclick="closeOverlay()">X</span>
+            <h3>Masukkan Password</h3>
+            <input type="password" id="passwordInput" placeholder="Password">
+            <button onclick="validatePassword()">Submit</button>
+        </div>
+    </div>
+
+    <div class="error-message" id="errorMessage">Password wajib diisi!</div>
+
+    <footer>
+        &copy; 2025 Web Lamaran Kerja. All Rights Reserved.
+    </footer>
+<script src="js/index.js"></script>
+</body>
+</html>

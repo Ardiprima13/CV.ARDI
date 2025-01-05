@@ -1,0 +1,933 @@
+.index-page {
+    .warning-box {
+        position: fixed;
+        top:-15%;
+        left: 21%;
+        padding: 15px 25px;
+        border-radius: 5px;
+        font-size: 500px;
+        font-weight: bold;
+        display: none; /* Tersembunyi awalnya */
+        z-index: 9999;
+        text-align: center;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+            transform: scale(1);
+        }
+        to {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateY(100%);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: url('img/Wallpaper.jpg') no-repeat center center fixed;
+        background-size: cover; /* Agar gambar menyesuaikan layar */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        color: white; /* Ubah warna teks agar terlihat jelas */
+    }
+
+    .unsupported-message {
+        font-size: 24px;
+        font-weight: bold;
+        background: rgba(0, 0, 0, 0.5); /* Transparansi hitam agar teks lebih terbaca */
+        padding: 20px;
+    }
+
+
+    /* Sembunyikan konten utama jika tidak didukung */
+    .main-content {
+        display: none;
+    }
+
+    .icon {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #16a085;
+        border-radius: 50%;
+        font-size: 20px;
+        font-weight: bold;
+        color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        animation: pulse 2s infinite;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+        position: relative;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .welcome-text {
+        font-size: 28px;
+        margin: 10px 0;
+    }
+
+    .title {
+        font-size: 42px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .profile-container {
+        width: 250px;
+        height: 250px;
+        perspective: 1000px;
+        margin: 20px auto;
+
+    }
+
+    .profile-image {
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transform: rotateY(0deg);
+        transition: transform 1s;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        backface-visibility: hidden;
+    }
+
+    .profile-image .front {
+        transform: rotateY(0deg);
+    }
+
+    .profile-image .back {
+        transform: rotateY(180deg);
+    }
+
+    .name {
+        font-size: 24px;
+        margin: 20px 0;
+    }
+
+    .button {
+        display: inline-block;
+        background-color: #16a085;
+        color: #ffffff;
+        padding: 12px 24px;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        animation: pulse 2s infinite;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .button:hover {
+        background-color: #13856d;
+        transform: scale(1.05);
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 253, 253, 0.027);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .overlay.active {
+        display: flex;
+    }
+
+    .overlay-content {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+        color: #333333;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        position: relative;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .overlay-content h3 {
+        margin-bottom: 20px;
+        color: #16a085;
+    }
+
+    .overlay-content input {
+        padding: 12px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        width: 90%;
+        border: 1px solid #cccccc;
+        border-radius: 8px;
+    }
+
+    .overlay-content .close-text {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #ff4d4d;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .overlay-content .close-text:hover {
+        color: #cc0000;
+    }
+
+    .overlay-content button {
+        background-color: #16a085;
+        color: #ffffff;
+        padding: 12px 24px;
+        border: none;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .overlay-content button:hover {
+        background-color: #13856d;
+    }
+
+    .error-message {
+        display: none;
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 0, 0, 0.8);
+        color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        z-index: 2000;
+        font-size: 18px;
+    }
+
+    .error-message.active {
+        display: block;
+        animation: fadeIn 0.5s ease-in-out, fadeOut 3s 3.5s forwards;
+    }
+
+    .unsupported-message {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .main-content {
+        display: none;
+    }
+
+    .main-content.active {
+        display: block;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        color: white;
+        text-align: center;
+        font-size: 14px;
+    }
+}
+.home-page {
+
+    .transparent {
+        mix-blend-mode: multiply;
+        filter: brightness(1.2) contrast(1.5);
+    }
+    
+    .warning-box {
+        position: fixed;
+        top:-15%;
+        left: 21%;
+        padding: 15px 25px;
+        border-radius: 5px;
+        font-size: 500px;
+        font-weight: bold;
+        display: none; /* Tersembunyi awalnya */
+        z-index: 9999;
+        text-align: center;
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        color: #333;
+        background: linear-gradient(135deg, #ffffff, #d3a5a5, #b0b0b0, #ffffff);
+        background-size: 400% 400%; /* Expands the gradient for animation */
+        animation: auroraAnimation 8s ease infinite; /* Smooth aurora effect animation */
+    }
+
+
+    /* Allow scrolling while hiding the scrollbar */
+    body {
+        overflow: scroll; /* Allows scrolling */
+    }
+
+    body::-webkit-scrollbar {
+        display: none; /* Hide scrollbar for WebKit browsers (Chrome, Safari, Opera) */
+    }
+
+    /* Firefox */
+    html {
+        scrollbar-width: none; /* Hide the scrollbar in Firefox */
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(135deg, #0d960d, #5ed097, #004d00);
+        background-size: 400% 400%;
+        color: white;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        animation: aurora 6s infinite alternate;
+    }
+
+    header .left-content {
+        display: flex;
+        align-items: center;
+    }
+
+    header .profile-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-right: 10px;
+        overflow: hidden;
+        border: 3px solid white;
+    }
+    .details {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .name-container {
+        display: flex;
+        align-items: center;
+    }
+    
+    .name {
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .phone {
+        font-size: 18px;
+        margin-top: 5px;
+    }
+    
+    .download-circle {
+        width: 30px;
+        height: 30px;
+        background-color: #3498db;
+        border-radius: 50%;
+        margin-left: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .download-circle:hover {
+        background-color: #2980b9;
+    }
+    
+    .download-circle i {
+        color: white;
+        font-size: 16px;
+    }
+    
+    header .profile-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    header .details .name {
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    header .details .phone {
+        margin-top: 5px;
+    }
+
+    /* Add a container to hold both icons vertically aligned */
+    header .icons-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Align icons to the left */
+        gap: 20px; /* Space between the icons */
+    }
+
+    /* Style for both icons */
+    header .logout-icon,
+    header .data-icon {
+        font-size: 24px; /* Ensure icons are the same size */
+        cursor: pointer;
+        background-color: #ff4d4d;
+        border-radius: 50%;
+        padding: 15px; /* Set equal padding to ensure circle size is consistent */
+        color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    header .logout-icon:hover,
+    header .data-icon:hover {
+        background-color: #e03e3e;
+    }
+
+    .about-me {
+        display: flex;
+        align-items: flex-start; /* Menempatkan teks di bagian atas */
+        justify-content: space-between;
+        background-color: #ffffff;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        opacity: 0; /* Mulai dengan elemen tersembunyi */
+        transition: opacity 1s ease-in-out; /* Menambahkan transisi */
+    }
+
+    .about-me .about-text {
+        flex: 1;
+        margin-right: 20px;
+        text-align: justify; /* Menambahkan justify pada teks */
+    }
+
+    .about-me .about-text h2 {
+        font-size: 22px;
+        color: #16a085;
+        margin-bottom: 1px;
+    }
+
+    .about-me .about-text p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 10px 0;
+    }
+
+    .about-me .about-image {
+        flex-shrink: 0;
+        width: 300px;
+        height: 300px;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 2px solid #ddd;
+    }
+
+    .about-me .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .education-status {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 90px;
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 8px;
+        opacity: 0; /* Mulai dengan elemen tersembunyi */
+        transform: translateY(20px); /* Elemen dimulai sedikit di bawah */
+        transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Menambahkan transisi untuk opacity dan transform */
+    }
+
+    .education-status .edu-box {
+        text-align: center;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .education-status .edu-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .education-status .edu-box h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .education-status .edu-box img {
+        width: 60%;
+        height: auto;
+        border-radius: 8px;
+        margin: 10px 0;
+        object-fit: cover;
+    }
+
+    .education-status .edu-box p {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.6;
+        margin-top: 5px;
+    }
+
+    /* Warna untuk SD, MTs, MA */
+    .sd {
+        background-color: #a8d5ba;  /* Hijau Muda */
+    }
+
+    .mts {
+        background-color: #a8d5ba;  /* Hijau Muda */
+    }
+
+    .ma {
+        background-color: #a8d5ba;  /* Hijau Muda */
+    }
+
+    /* Warna untuk Kuliah */
+    .kuliah {
+        background-color: #f9d853;  /* Kuning */
+    }
+
+    .address-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        background-color: #ffffff;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        margin-top: 20px;
+        opacity: 0; /* Mulai dengan elemen tersembunyi */
+        transform: translateY(20px); /* Elemen dimulai sedikit di bawah */
+        transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Menambahkan transisi untuk opacity dan transform */
+    }
+
+    .address-section .address-text {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .address-section .address-map {
+        height: 300px;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 2px solid #ddd;
+    }
+
+    .address-section .address-map iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    .contact-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Membagi menjadi 2 kolom */
+        gap: 40px; /* Jarak antar kolom */
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 8px;
+        opacity: 0; /* Mulai tersembunyi */
+        transform: translateY(20px); /* Dimulai sedikit di bawah */
+        transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+    }
+
+    .contact-container.show {
+        opacity: 1; /* Menampilkan elemen */
+        transform: translateY(0); /* Posisi awal */
+    }
+
+    .contact-column {
+        text-align: center; /* Pusatkan teks */
+        padding: 15px;
+        border: 1px solid #ddd;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-column:hover {
+        transform: scale(1.05); /* Memperbesar saat hover */
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-column .icon {
+        font-size: 70px; /* Ukuran ikon besar */
+        margin-bottom: 10px; /* Jarak bawah ikon */
+    }
+
+    .contact-column .contact-text {
+        font-size: 16px;
+        color: #555;
+        margin-top: 5px; /* Memberikan jarak dari ikon */
+    }
+
+    .contact-column h3 {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 10px 0; /* Jarak atas dan bawah */
+        color: #333;
+    }
+
+    .email-icon {
+        color: #4285f4; /* Warna biru Google untuk ikon email */
+    }
+
+    .whatsapp-icon {
+        color: #25d366; /* Warna hijau WhatsApp */
+    }
+
+    .contact-column a {
+        color: inherit; /* Inherit color from the parent */
+        text-decoration: none; /* Remove underline */
+        font-weight: bold;
+    }
+
+    .contact-column a:hover {
+        text-decoration: underline; /* Add underline on hover */
+    }
+
+    .languages-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Membagi menjadi 2 kolom */
+        gap: 30px; /* Jarak antar kolom */
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 8px;
+        opacity: 0; /* Mulai tersembunyi */
+        transform: translateY(20px); /* Dimulai sedikit di bawah */
+        transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+    }
+
+    .language-box {
+        width: auto;
+        height: 200px;
+        perspective: 1000px; /* Enable 3D effect for each box */
+        cursor: pointer;
+    }
+
+    .inner-box {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.6s ease;
+    }
+
+    .inner-box.show {
+        transform: rotateY(180deg); /* Rotate to show the back */
+    }
+
+    .front,
+    .back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden; /* Hide the back when front is visible */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .front {
+        background-color: #f9f9f9;
+    }
+
+    .back {
+        background-color: #4285f4; /* Background color for proficiency */
+        color: #fff;
+        transform: rotateY(180deg); /* Start flipped */
+    }
+
+    .flag {
+        width: 200px;
+        height: 100px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        object-fit: cover;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .language-name {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .proficiency {
+        font-size: 25px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center; /* Center the text */
+        font-size: 2rem; /* Adjust the font size if needed */
+        margin-bottom: 20px; /* Add space below the heading */
+    }
+
+    .cv-content {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-top: 20px;
+    }
+
+    .container {
+        overflow: auto;
+        scrollbar-width: none;  /* For Firefox */
+        -ms-overflow-style: none;  /* For Internet Explorer 10+ */
+    }
+
+    .container::-webkit-scrollbar {
+        display: none;  /* For Chrome, Safari, and Opera */
+    }
+
+    img {
+        -webkit-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        position: relative;
+    }
+
+    img::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0);
+    }
+
+    .hobby-section {
+        margin-top: 30px; /* Menambahkan jarak bagian atas */
+        text-align: center;
+        margin-bottom: 30px; /* Menambahkan jarak bagian bawah */
+        opacity: 0; /* Mulai dengan elemen tersembunyi */
+        transition: opacity 1s ease-in-out; /* Menambahkan transisi */
+    }
+    
+    .circle-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .circle {
+        width: 160px;
+        height: 160px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: transform 0.4s ease, background-color 0.4s ease;
+    }
+
+    .circle.playing {
+        background-color: #ff6347; /* Warna berubah saat diputar */
+        transform: rotate(360deg); /* Memutar lingkaran saat musik diputar */
+    }
+    
+    
+    .circle i {
+        font-size: 90px;
+    }
+    
+}
+
+.code-page {
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Styling untuk tombol kembali */
+    .back-button {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+
+    .back-button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Styling untuk memastikan header tetap rapi */
+    header {
+        position: relative;
+        text-align: center;
+        padding: 10px;
+        background: linear-gradient(135deg, #0d960d, #5ed097, #004d00);
+    }
+
+    header h1 {
+        font-size: 36px;
+        color: #333;
+    }
+
+    header .subtitle {
+        font-size: 18px;
+        color: #555;
+        margin-top: 10px;
+    }
+
+    /* Styling untuk setiap baris */
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 20px;
+    }
+
+    .left {
+        flex: 1;
+        padding-right: 20px;
+        text-align: center;
+    }
+
+    .right {
+        flex: 2;
+    }
+
+    .tech-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .right h2 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .right p {
+        font-size: 16px;
+        color: #555;
+    }
+
+    /* Responsivitas untuk tampilan mobile */
+    @media (max-width: 768px) {
+        .row {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .left {
+            padding-right: 0;
+            margin-bottom: 20px;
+        }
+
+        .right {
+            padding-top: 20px;
+        }
+    }
+}

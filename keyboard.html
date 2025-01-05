@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - CV</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #f4f4f9, #e8f0ff);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Tombol Kembali */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: #4CAF50;
+            text-decoration: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.2);
+            color: #388E3C;
+        }
+
+        /* Tombol Tambah Data */
+        .add-btn {
+            font-size: 24px;
+            color: #ffffff;
+            background-color: #4CAF50;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .add-btn:hover {
+            transform: scale(1.2);
+            background-color: #388E3C;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background: #4CAF50;
+            color: white;
+        }
+
+        td {
+            background: #ffffff;
+            transition: background 0.3s ease;
+        }
+
+        tr:nth-child(even) td {
+            background: #f9f9f9;
+        }
+
+        tr:hover td {
+            background: #e8f5e9;
+        }
+
+        .delete-btn {
+            color: red;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            color: darkred;
+        }
+
+        /* Modal (Overlay) Styling */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 350px;
+            position: relative;
+        }
+
+        .modal input, .modal textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 12px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .modal button {
+            width: 45%;
+            padding: 12px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .modal .save-btn {
+            background: #3d8ccd;
+            margin-right: 16px; /* memberi jarak ke tombol Batal */
+        }
+
+        .modal .cancel-btn {
+            background: #f44336;
+        }
+
+        .modal button:hover {
+            background: #388E3C;
+        }
+
+        .no-data-message {
+            color: #888;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                width: 100%;
+                padding: 15px;
+            }
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tombol Kembali (Icon) -->
+    <a href="home.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <!-- Tombol Tambah Data (Icon) -->
+    <i class="fas fa-plus add-btn" onclick="showModal()"></i>
+
+    <div class="container">
+        <h2>Curriculum Vitae</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Experience</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cv-table-body">
+                <!-- Data will be loaded from localStorage here -->
+            </tbody>
+        </table>
+
+        <div id="no-data-message" class="no-data-message" style="display: none;">
+            Data Kosong
+        </div>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div class="overlay" id="modal-overlay">
+        <div class="modal">
+            <h3>Tambah Data</h3>
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="address" placeholder="Address" required>
+            <textarea id="experience" placeholder="Experience" required></textarea>
+            <button class="save-btn" onclick="saveData()">Save</button>
+            <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+
+    <!-- JavaScript untuk autentikasi dan interaksi -->
+    <script src="js/connected.js"></script>
+</body>
+</html>
